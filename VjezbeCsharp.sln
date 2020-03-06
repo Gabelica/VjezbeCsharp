@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VjezbeCsharp", "VjezbeCsharp.csproj", "{E9C04F36-34D1-4C95-BCC7-4354904D83FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vjezba1", "..\Vjezba1\Vjezba1.csproj", "{F65428FB-93AF-420E-ACA7-E206925D6FF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vjezba1", "Vjezba1\Vjezba1.csproj", "{BDC41F89-2991-4A72-8EC3-A224AEB4B371}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{E9C04F36-34D1-4C95-BCC7-4354904D83FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9C04F36-34D1-4C95-BCC7-4354904D83FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9C04F36-34D1-4C95-BCC7-4354904D83FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F65428FB-93AF-420E-ACA7-E206925D6FF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F65428FB-93AF-420E-ACA7-E206925D6FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F65428FB-93AF-420E-ACA7-E206925D6FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F65428FB-93AF-420E-ACA7-E206925D6FF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC41F89-2991-4A72-8EC3-A224AEB4B371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC41F89-2991-4A72-8EC3-A224AEB4B371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC41F89-2991-4A72-8EC3-A224AEB4B371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC41F89-2991-4A72-8EC3-A224AEB4B371}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
