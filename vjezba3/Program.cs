@@ -1,6 +1,9 @@
 ﻿using Lab1App;
 using System;
 using System.Collections;
+using System.Data.Common;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Labs
 {
@@ -16,9 +19,15 @@ namespace Labs
 		static void Main(string[] args)
 		{
 			DataModel dm = new DataModel();
+			DataModel.CircleAddedEvent += DataModel_CircleAddedEvent;
 			Console.WriteLine("Program started");
 			Console.WriteLine();
 			doMainMenu();
+		}
+
+		private static void Dm_OnCircleAdded()
+		{
+			Console.WriteLine("ide maca preko ceste");
 		}
 
 		private static void printMainMenu()
@@ -73,6 +82,7 @@ namespace Labs
 				}
 				else if (s.ToUpper() == "Q")
 				{
+					DataModel.CircleAddedEvent -= DataModel_CircleAddedEvent;
 					Console.WriteLine("Exit of application");
 					break;
 				}
@@ -93,7 +103,8 @@ namespace Labs
 					{
 						double r = System.Convert.ToDouble(input);
 						Circle myCircle = new Circle(r);
-						DataModel.getAllElementsList().Add(myCircle);
+						DataModel.AddElementToList(myCircle);
+						//DataModel.getAllElementsList().Add(myCircle);
 						Console.WriteLine("New circle inserted!");
 						Console.Write("Do you want to insert one more circle? (y/n)");
 
@@ -101,7 +112,7 @@ namespace Labs
 						while (true)
 						{
 							s = Console.ReadLine().Trim();
-							if (s == "y")
+							 if (s == "y")
 							{
 								Console.Write("Radius=");
 								break;
@@ -124,6 +135,11 @@ namespace Labs
 
 
 			}
+		}
+
+		private static void DataModel_CircleAddedEvent(object sender, string e)
+		{
+			Console.WriteLine(" X i Y dodanog objekta su : " + e);
 		}
 
 		private static void doSubMenuSquare()

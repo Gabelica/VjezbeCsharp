@@ -5,31 +5,44 @@ namespace vjezba1
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
-            var result = Zadatak1();
-            result = Zadatak2();
+            int result;
+            //result = Zadatak1();
+            //result = Zadatak2();
             result = Zadatak3();
             Console.Read();
-
+            return result;
         }
 
         static int Zadatak1()
         {
-            int a, b;
+            double a, b;
+            double result;
             Console.WriteLine("Unesi prvi broj: ");
-            int.TryParse(Console.ReadLine(), out a);
+            string sa = Console.ReadLine();
             Console.WriteLine("Unesi drugi broj: ");
-            int.TryParse(Console.ReadLine(), out b);
-            var result = a / b;
+            string sb = Console.ReadLine();
 
-            Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu Currency jednako je {2}", a, b, result.ToString("C", CultureInfo.CurrentCulture)));
-            Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu Integer jednako je {2}", a, b, Convert.ToInt32(result)));
-            Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu Scientific jednako je {0:#.###e+00}", a, b, result));
-            Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu Fixed-point jednako je {2}", a, b, result.ToString("F", CultureInfo.InvariantCulture)));
-            Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu General jednako je {2}", a, b, result.ToString("G", CultureInfo.InvariantCulture)));
-            Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu Number jednako je {2}", a, b, result.ToString("N", CultureInfo.InvariantCulture)));
-            Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu Hexadecimal jednako je {2}", a, b, result.ToString("X", CultureInfo.InvariantCulture)));
+            try
+            {
+                a = double.Parse(sa);
+                b = double.Parse(sb);
+
+                result = a / b;
+
+                Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu Currency jednako je {2}", a, b, result.ToString("C", CultureInfo.CurrentCulture)));
+                Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu Integer jednako je {2}", a, b, Convert.ToInt32(result)));
+                Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu Scientific jednako je {0:#.###e+00}", a, b, result));
+                Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu Fixed-point jednako je {2}", a, b, result.ToString("F", CultureInfo.InvariantCulture)));
+                Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu General jednako je {2}", a, b, result.ToString("G", CultureInfo.InvariantCulture)));
+                Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu Number jednako je {2}", a, b, result.ToString("N", CultureInfo.InvariantCulture)));
+                Console.WriteLine(String.Format("{0} podjeljen sa {1} u formatu Hexadecimal jednako je {2}", a, b, ((int)result).ToString("X", CultureInfo.InvariantCulture)));
+            }
+            catch
+            {
+                Console.WriteLine("Neispravan unos");
+            }
             return 0;
         }
         static int Zadatak2()
@@ -38,7 +51,10 @@ namespace vjezba1
             long b = long.MaxValue;
             try
             {
-                a = checked(Convert.ToInt32(b));
+                a = (int)b + 5;
+                Console.WriteLine("Unchecked a " + a);
+                a = checked((int)b + 5);
+                Console.WriteLine("Checked a " + a);
             }
             catch (OverflowException)
             {
@@ -95,25 +111,29 @@ namespace vjezba1
 
         public static BankAccount AddNewAccount()
         {
-            string AccNum;
-            double AccBalance;
-            Account AccType;
+            string AccNum, AccBalance, AccType;
             Console.WriteLine("Unesi broj racuna: ");
             AccNum = Console.ReadLine();
             Console.WriteLine("Unesi stanje racuna: ");
-            var Balance = Console.ReadLine();
+            AccBalance = Console.ReadLine();
+            Console.WriteLine("Tip racune: ");
+            AccType = Console.ReadLine();
             try
             {
-                AccBalance = double.Parse(Balance);
-                Console.WriteLine("Tip racuna: ");
-                var type = Console.ReadLine();
-                AccType = (Account)int.Parse(type);
+                double balance, type;
+                double.TryParse(AccBalance, out balance);
+                double.TryParse(AccType, out type);
+                var AccountType = (Account)type;
+                return new BankAccount(AccNum, balance, AccountType);
+
             }
             catch
             {
-                return new BankAccount();
+                Console.WriteLine("Neispravan unos");
             }
-            return new BankAccount(AccNum, AccBalance, AccType);
+            return new BankAccount();
+
         }
     }
 }
+
