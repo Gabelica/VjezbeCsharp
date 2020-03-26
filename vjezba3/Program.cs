@@ -25,11 +25,6 @@ namespace Labs
 			doMainMenu();
 		}
 
-		private static void Dm_OnCircleAdded()
-		{
-			Console.WriteLine("ide maca preko ceste");
-		}
-
 		private static void printMainMenu()
 		{
 			Console.WriteLine("You are in main menu - choose action:");
